@@ -139,29 +139,39 @@ if repeat_count == 0:
     #end
  
  
-    if assumeAllInputsArePaths:
+    if assumeAllInputsArePaths: # Case 2
         input_paths = input_fileOrPath
+        output_path = output_fileOrPath
+        
+        checkAndCreateDirectory(output_path)
+        
         # If number of input directories are supplied, append all images with the same name in each directory
-        for filename in os.listdir(input_path):
-            for p in range(input_path):
-                input_filename[p] = os.path.join(input_path[p], filename)
-                if os.path.isfile(input_filename[p]):
-                    print(f"File {input_filename[p]} does not exist.")
+        for filename in os.listdir(input_paths[0]):
+            input_filepaths = []
+            for p in range(len(input_paths)):
+                print(f"{input_paths[p]}")
+                print(f"{filename}")
+                print(p)
+                input_filepaths.append(os.path.join(input_paths[p], filename))
+                if os.path.isfile(input_filepaths[p]):
+                    print(f"Error: File in filepath [ {input_filepaths[p]} ] does not exist!!!")
                 #end
             #end
             
-            if input_path == output_path:
-                output_filename = os.path.splitext(input_filename)[0] + "_combined" + os.path.splitext(input_filename)[1]
-            else:
-                output_filename = os.path.join(output_path, filename) 
+            output_filename = os.path.join(output_path, filename) 
+            if os.path.isfile(output_filename):
+                output_filename = os.path.splitext(input_filepaths)[0] + "_combined" + os.path.splitext(input_filepaths)[1]
             #end
-            
-            append_images([input_filename], output_filename,0)                
+            #TODO:!!!!!!!!!! LAST ERROR 
+            print(f"{input_paths}")
+            append_images([input_filepaths], output_filename,0)                
         #end
     
-    else:
+    else: # Case 1
         # Not all inputs arguments are valid directories therefore they must be file-paths
         input_filenames = input_fileOrPath
+        output_filename = output_fileOrPath
+
         append_images(input_filenames, output_filename,repeat_count)
     #end
 
