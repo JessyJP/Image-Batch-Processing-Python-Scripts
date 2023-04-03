@@ -10,7 +10,7 @@
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software...
 
 ### ----------- Check requirements ----------- 
-from install_packages import check_and_install_required_packages
+from common_util import check_and_install_required_packages
 
 # List of required packages
 required_packages = ['Pillow']
@@ -124,7 +124,7 @@ def append_images(input_filenames, output_filename, repeat_count=0):
 
 # Append all image in a list of input image file paths for case 1: or the same filename from each directory case 2:
 if repeat_count == 0:
-    output_filename = output_fileOrPath;
+    output_filename = output_fileOrPath
     input_fileOrPath = []
     for arg in sys.argv[3:]:
         input_fileOrPath.append(arg)
@@ -132,6 +132,7 @@ if repeat_count == 0:
     
     assumeAllInputsArePaths = True
     for checkPath in input_fileOrPath:
+        checkPath = os.path.dirname(checkPath)# convert ot dirname
         # This condition will check if all of the 
         if not os.path.isdir(checkPath) or not os.path.exists(checkPath):
             assumeAllInputsArePaths = False
