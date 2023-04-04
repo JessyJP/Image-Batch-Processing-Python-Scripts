@@ -27,7 +27,7 @@ from common_util import checkAndCreateDirectory , checkAndCreateDirectory_withFi
 
 # Get command line arguments
 if len(sys.argv) < 3:
-    print("Usage: python image_rotate.py <input_file_or_directory> <angle> [<output_file_or_directory>]")
+    print("Usage: python rotate.py <input_file_or_directory> <angle> [<output_file_or_directory>]")
     sys.exit(1)
 #end
 

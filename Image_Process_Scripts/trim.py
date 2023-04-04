@@ -27,7 +27,7 @@ from common_util import checkAndCreateDirectory , checkAndCreateDirectory_withFi
 
 # Get command line arguments
 if len(sys.argv) < 6:
-    print("Usage: python image_trim.py <top pixels> <bottom pixels> <left pixels> <right pixels> <image input directory or file-path> [image output directory or file-path] ")#[image extension]
+    print("Usage: python trim.py <top pixels> <bottom pixels> <left pixels> <right pixels> <image input directory or file-path> [image output directory or file-path] ")#[image extension]
     sys.exit(1)
 #end
 

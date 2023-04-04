@@ -28,10 +28,10 @@ from common_util import checkAndCreateDirectory
 # Get command line arguments
 if len(sys.argv) < 5:
     print("Usage: \n\
-                  case 1: python image_append.py <append direction> <output file-path> <input image file-paths>    OR \n\
-                  case 2: python image_append.py <append direction> <output directory> <input image directories>   (assume the same filename is found in each directory OR \n\
-                  case 3: python image_append.py <append direction> <output file-path> <input image file-path> <repeat count>    OR \n\
-                  case 4: python image_append.py <append direction> <output directory> <input directory> <repeat count>       \n \n \
+                  case 1: python append.py <append direction> <output file-path> <input image file-paths>    OR \n\
+                  case 2: python append.py <append direction> <output directory> <input image directories>   (assume the same filename is found in each directory OR \n\
+                  case 3: python append.py <append direction> <output file-path> <input image file-path> <repeat count>    OR \n\
+                  case 4: python append.py <append direction> <output directory> <input directory> <repeat count>       \n \n \
                   append direction is -h or -v \
                   append direction without interruption is -hc or -vc ")
     sys.exit(1)

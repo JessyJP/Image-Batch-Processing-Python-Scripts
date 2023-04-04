@@ -28,7 +28,7 @@ from common_util import process_resize_images
 
 # Get command line arguments
 if len(sys.argv) < 4:
-    print("Usage: python image_resize.py <width> <height> <image input directory or file-path> [image output directory or file-path]")
+    print("Usage: python resize.py <width> <height> <image input directory or file-path> [image output directory or file-path]")
     sys.exit(1)
 #end
 
