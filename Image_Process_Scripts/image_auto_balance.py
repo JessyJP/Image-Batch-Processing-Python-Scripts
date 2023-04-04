@@ -1,8 +1,8 @@
 ### ----------- Copy Right ----------- 
-# Image Color Balance Script
+# Image Auto Color Balance Script
 # Author: JessyJP
 # Date: April 4, 2023
-# Description: This script does color balance on an image or a directory of images.
+# Description: This script does auto color balance on an image or a directory of images.
 
 # The script uses the Pillow library, which is licensed under the open-source PIL Software License:
 # Permission to use, copy, modify and distribute PIL and its associated documentation for any purpose and without fee is hereby granted, provided that the above copyright notice appear in all copies.
@@ -33,9 +33,11 @@ if len(sys.argv) < 2:
 input_fileOrPath = sys.argv[1]
 output_fileOrPath = sys.argv[2] if len(sys.argv) >= 3 else None
 
+from PIL import Image, ImageOps, ImageStat
+
 def image_color_balance(input_filename, output_filename):
     """
-    Adjusts color balance of an individual image.
+    Auto-Adjusts color balance of an individual image.
 
     Args:
         input_filename (str): The path to the input image file.
@@ -47,12 +49,12 @@ def image_color_balance(input_filename, output_filename):
     # Load the image
     image = Image.open(input_filename)
 
-    # Apply autocontrast and equalize
-    image = ImageOps.autocontrast(ImageOps.equalize(image), cutoff=1)
-
-   # Convert the image to the RGB mode if it's not already in that mode
+    # Convert the image to the RGB mode if it's not already in that mode
     if image.mode != 'RGB':
         image = image.convert('RGB')
+
+    # Apply autocontrast and equalize
+    image = ImageOps.autocontrast(ImageOps.equalize(image), cutoff=1)
 
     # Split the image into red, green, and blue bands
     r, g, b = image.split()
@@ -79,11 +81,13 @@ def image_color_balance(input_filename, output_filename):
     color_balanced_image.save(output_filename)
 
     # Print message for the processed image
-    print(f"Color Balance:{input_filename} -> {output_filename}")
+    print(f"Auto Color Balance:{input_filename} -> {output_filename}")
+
+#end
 
 
 
-# Adjust color balance of all images in a directory or a specific type of image
+# Auto-Adjust color balance of all images in a directory or a specific type of image
 if os.path.isdir(input_fileOrPath):
     # Assign the relevant variables
     input_path = input_fileOrPath
@@ -91,25 +95,25 @@ if os.path.isdir(input_fileOrPath):
     
     checkAndCreateDirectory(output_path)
             
-    # If an input directory is supplied, adjust color balance of all images in the directory one by one
+    # If an input directory is supplied, auto-adjust color balance of all images in the directory one by one
     for filename in os.listdir(input_path):
         input_filename = os.path.join(input_path, filename)
         if output_fileOrPath is None:
-            output_filename = os.path.join(input_path, f"{os.path.splitext(filename)[0]}_color_balanced{os.path.splitext(filename)[1]}")
+            output_filename = os.path.join(input_path, f"{os.path.splitext(filename)[0]}_auto_color_balanced{os.path.splitext(filename)[1]}")
         else:
             output_filename = os.path.join(output_path, filename)
         
-        # Adjust color balance    
+        # Auto-Adjust color balance    
         image_color_balance(input_filename, output_filename)
         
 else:
-    # If a single image is supplied, just adjust color balance of that image
+    # If a single image is supplied, just auto-adjust color balance of that image
     # Assign the relevant variables
     input_filename = input_fileOrPath
     if output_fileOrPath is None:
-        output_filename = os.path.join(os.path.dirname(input_filename), f"{os.path.splitext(os.path.basename(input_filename))[0]}_color_balanced{os.path.splitext(os.path.basename(input_filename))[1]}")
+        output_filename = os.path.join(os.path.dirname(input_filename), f"{os.path.splitext(os.path.basename(input_filename))[0]}_auto_color_balanced{os.path.splitext(os.path.basename(input_filename))[1]}")
     else:
         output_filename = output_fileOrPath
     
-    # Adjust color balance
+    # Auto-Adjust color balance
     image_color_balance(input_filename, output_filename)

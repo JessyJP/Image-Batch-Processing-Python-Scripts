@@ -52,19 +52,26 @@ python ./Image_Process_Scripts/image_resize_by_ref.py ./Input/FX_06_ReaSynth.png
 python ./Image_Process_Scripts/image_resize_by_ref.py ./Input/FX_07_Resamplamatic5000.png. ./Output/Test_resized_by_ref_file_image.png
 python ./Image_Process_Scripts/image_resize_by_ref.py ./Input/FX_06_ReaSynth.png 		   ./Input 										./Output/Test_resize_by_ref_file_dir
 python ./Image_Process_Scripts/image_resize_by_ref.py ./Input/FX_07_Resamplamatic5000.png  ./Output/Test_resize_by_ref_file_dir
-REM python ./Image_Process_Scripts/image_resize_by_ref.py ./Output/Test_resize_by_ref_file_dir ./Output/Test_trim_dir						./Test_resize_by_ref_file_one2one_dir
-REM python ./Image_Process_Scripts/image_resize_by_ref.py ./Output/Test_resize_by_ref_file_dir ./Output/Test_trim_dir						./Test_resize_by_ref_file_one2one_dir
+REM TODO:	!!!!!! REM python ./Image_Process_Scripts/image_resize_by_ref.py ./Output/Test_resize_by_ref_file_dir ./Output/Test_trim_dir						./Test_resize_by_ref_file_one2one_dir
+REM TODO:	!!!!!! REM python ./Image_Process_Scripts/image_resize_by_ref.py ./Output/Test_resize_by_ref_file_dir ./Output/Test_trim_dir						./Test_resize_by_ref_file_one2one_dir
 
 
 REM : image_append.py
 REM python ./Image_Process_Scripts/image_append.py
-REM python ./Image_Process_Scripts/image_append.py -h test1.png i1.png 3
-REM python ./Image_Process_Scripts/image_append.py -v test2.png i1.png 3
-REM python ./Image_Process_Scripts/image_append.py -v test3.png i1.png i2.png i3.png 
-REM python ./Image_Process_Scripts/image_append.py -v test4.png i2.png i2.png  
-REM python ./Image_Process_Scripts/image_append.py -h ./Output/test1 ./Output/Step_1_NoWindowBorders 5
-REM python ./Image_Process_Scripts/image_append.py -v ./Output/test2 ./Output/Step_1_NoWindowBorders 4
-REM python ./Image_Process_Scripts/image_append.py -v ./Output/test3 ./Output/Step_1_NoWindowBorders/ ./Output/Step2_B/ ./Output/Step_1_NoWindowBorders ./Output/Step2_B
+python ./Image_Process_Scripts/image_append.py -v ./Output/test_append_file_h.png ./Input/FX_08_VirtualDrummerSolid.png 3
+python ./Image_Process_Scripts/image_append.py -v ./Output/test_append_file_h2.png ./Input/FX_06_ReaSynth.png ./Input/FX_07_Resamplamatic5000.png ./Input/FX_08_VirtualDrummerSolid.png
+python ./Image_Process_Scripts/image_append.py -h ./Output/test_append_file_v.png ./Input/FX_08_VirtualDrummerSolid.png 3
+python ./Image_Process_Scripts/image_append.py -h ./Output/test_append_file_v2.png ./Input/FX_06_ReaSynth.png ./Input/FX_07_Resamplamatic5000.png ./Input/FX_08_VirtualDrummerSolid.png
+python ./Image_Process_Scripts/image_append.py -h ./Output/Test_Append_1_h ./Input/ 1
+python ./Image_Process_Scripts/image_append.py -h ./Output/Test_Append_2_h ./Input/ 2
+python ./Image_Process_Scripts/image_append.py -h ./Output/Test_Append_3_h ./Input/ 3
+python ./Image_Process_Scripts/image_append.py -h ./Output/Test_Append_4_h ./Input/ 4
+python ./Image_Process_Scripts/image_append.py -h ./Output/Test_Append_5_h ./Input/ 5
+python ./Image_Process_Scripts/image_append.py -v ./Output/Test_Append_1_v ./Input/ 1
+python ./Image_Process_Scripts/image_append.py -v ./Output/Test_Append_2_v ./Input/ 2
+python ./Image_Process_Scripts/image_append.py -v ./Output/Test_Append_3_v ./Input/ 3
+python ./Image_Process_Scripts/image_append.py -v ./Output/Test_Append_4_v ./Input/ 4
+python ./Image_Process_Scripts/image_append.py -v ./Output/Test_Append_5_v ./Input/ 5
+python ./Image_Process_Scripts/image_append.py -v ./Output/Test_append_Combined_v ./Output/Test_auto_balance_dir/ ./Output/Test_blur_dir/ ./Output/Test_resize_by_ref_file_dir ./Output/Test_resize_dir  ./Output/Test_trim_dir
+python ./Image_Process_Scripts/image_append.py -h ./Output/Test_append_Combined_h ./Output/Test_auto_balance_dir/ ./Output/Test_blur_dir/ ./Output/Test_resize_by_ref_file_dir ./Output/Test_resize_dir 	./Output/Test_trim_dir
 
-
-REM python ./Image_Process_Scripts/image_auto_balance.py test1.png balance.png
