@@ -23,59 +23,19 @@ check_and_install_required_packages(required_packages)
 from PIL import Image
 import sys
 import os
-from common_util import checkAndCreateDirectory
+from common_util import checkAndCreateDirectory, checkAndCreateDirectory_withFileName
+from common_util import process_resize_images
 
 # Get command line arguments
 if len(sys.argv) < 4:
     print("Usage: python image_resize.py <width> <height> <image input directory or file-path> [image output directory or file-path]")
     sys.exit(1)
+#end
 
 width = int(sys.argv[1])
 height = int(sys.argv[2])
 input_fileOrPath = sys.argv[3]
 output_fileOrPath = sys.argv[4] if len(sys.argv) >= 5 else None
 
-# Define function to resize an individual image
-def resize_image(input_filename, output_filename):
-    # Load the image
-    image = Image.open(input_filename)
-
-    # Resize the image
-    resized_image = image.resize((width, height))
-
-    # Save the resized image
-    resized_image.save(output_filename)
-
-    # Print message for the processed image
-    print(f"{input_filename} -> {output_filename}")
-
-
-# Resize all images in a directory or a specific type of image
-if os.path.isdir(input_fileOrPath):
-    # Assign the relevant variables
-    input_path = input_fileOrPath;
-    output_path = output_fileOrPath;
-    
-    checkAndCreateDirectory(output_path)
-            
-    # If an input directory is supplied, resize all images in the directory one by one
-    for filename in os.listdir(input_path):
-        input_filename = os.path.join(input_path, filename)
-        if output_path is None:
-            output_filename = os.path.splitext(input_filename)[0] + "_resized" + os.path.splitext(input_filename)[1]
-        else:
-            output_filename = os.path.join(output_path, filename)
-        
-        # Do the resizing    
-        resize_image(input_filename, output_filename)
-        
-else:
-    # If a single image is supplied, just resize that image
-    # Assign the relevant variables
-    input_filename = input_fileOrPath;
-    if output_fileOrPath is None:
-        output_filename = os.path.splitext(input_filename)[0] + "_resized" + os.path.splitext(input_filename)[1]
-    else:
-        output_filename = output_fileOrPath;
-    # Do the resizing
-    resize_image(input_filename, output_filename)
+# Call the main function
+process_resize_images(width,height,input_fileOrPath,output_fileOrPath)

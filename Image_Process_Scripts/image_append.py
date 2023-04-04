@@ -77,7 +77,7 @@ def append_images_horizontally(input_filenames, output_filename, repeat_count=0)
     new_image.save(output_filename)
     
     # Print message for the processed images
-    print(f"{input_filenames} {arrow} {output_filename}")
+    print(f"Append Horizontally: {input_filenames} {arrow} {output_filename}")
 #end    
 
 # Define function to append multiple images vertically
@@ -109,7 +109,7 @@ def append_images_vertically(input_filenames, output_filename,repeat_count=0):
     new_image.save(output_filename)
     
     # Print message for the processed images
-    print(f"{input_filenames} {arrow} {output_filename}")
+    print(f"Append Vertially: {input_filenames} {arrow} {output_filename}")
 #end
 
 # Direction dispatcher 
@@ -132,6 +132,9 @@ if repeat_count == 0:
     
     assumeAllInputsArePaths = True
     for checkPath in input_fileOrPath:
+        if not checkPath.endswith('/'):
+            checkPath += '/'
+        #end
         checkPath = os.path.dirname(checkPath)# convert ot dirname
         # This condition will check if all of the 
         if not os.path.isdir(checkPath) or not os.path.exists(checkPath):
@@ -150,22 +153,19 @@ if repeat_count == 0:
         for filename in os.listdir(input_paths[0]):
             input_filepaths = []
             for p in range(len(input_paths)):
-                print(f"{input_paths[p]}")
-                print(f"{filename}")
-                print(p)
                 input_filepaths.append(os.path.join(input_paths[p], filename))
-                if os.path.isfile(input_filepaths[p]):
+                if not (os.path.exists(input_filepaths[p]) and os.path.isfile(input_filepaths[p])):
                     print(f"Error: File in filepath [ {input_filepaths[p]} ] does not exist!!!")
+                    sys.exit(1)
                 #end
             #end
             
             output_filename = os.path.join(output_path, filename) 
-            if os.path.isfile(output_filename):
-                output_filename = os.path.splitext(input_filepaths)[0] + "_combined" + os.path.splitext(input_filepaths)[1]
+            if (os.path.exists(output_filename) and os.path.isfile(output_filename)):
+                output_filename = os.path.splitext(output_filename)[0] + "_combined" + os.path.splitext(output_filename)[1]
             #end
-            #TODO:!!!!!!!!!! LAST ERROR 
-            print(f"{input_paths}")
-            append_images([input_filepaths], output_filename,0)                
+
+            append_images(input_filepaths, output_filename,0)                
         #end
     
     else: # Case 1

@@ -23,12 +23,13 @@ check_and_install_required_packages(required_packages)
 from PIL import Image
 import sys
 import os
-from common_util import checkAndCreateDirectory
+from common_util import checkAndCreateDirectory , checkAndCreateDirectory_withFileName
 
 # Get command line arguments
 if len(sys.argv) < 6:
     print("Usage: python image_trim.py <top pixels> <bottom pixels> <left pixels> <right pixels> <image input directory or file-path> [image output directory or file-path] ")#[image extension]
     sys.exit(1)
+#end
 
 top_pixels = int(sys.argv[1])
 bottom_pixels = int(sys.argv[2])
@@ -52,7 +53,8 @@ def trim_image(input_filename, output_filename):
     trimmed_image.save(output_filename)
 
     # Print message for the processed image
-    print(f"{input_filename} -> {output_filename}")
+    print(f"Trim: {input_filename} -> {output_filename}")
+#end
 
 
 # Trim all images in a directory or a specific type of image
@@ -74,6 +76,7 @@ if os.path.isdir(input_fileOrPath):
         
         # Do the trimming    
         trim_image(input_filename, output_filename)
+    #end
         
 else:
     # If a single image is supplied, just trim that image
@@ -83,5 +86,10 @@ else:
         output_filename = os.path.splitext(input_filename)[0] + "_trimmed" + os.path.splitext(input_filename)[1]
     else:
         output_filename = output_fileOrPath;
+    #end
+    
+    checkAndCreateDirectory_withFileName(output_filename)
+        
     # Do the trimming
     trim_image(input_filename, output_filename)
+#end

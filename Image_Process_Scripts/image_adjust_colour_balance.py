@@ -48,7 +48,7 @@ def adjust_color_balance(input_filename, output_filename):
     color_balanced_image.save(output_filename)
 
     # Print message for the processed image
-    print(f"{input_filename} -> {output_filename}")
+    print(f"Adjust Color Balance: {input_filename} -> {output_filename}")
 
 
 # Adjust color balance of all images in a directory or a specific type of image
