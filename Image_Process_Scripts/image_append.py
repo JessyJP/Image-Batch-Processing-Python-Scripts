@@ -32,11 +32,18 @@ if len(sys.argv) < 5:
                   case 2: python image_append.py <append direction> <output directory> <input image directories>   (assume the same filename is found in each directory OR \n\
                   case 3: python image_append.py <append direction> <output file-path> <input image file-path> <repeat count>    OR \n\
                   case 4: python image_append.py <append direction> <output directory> <input directory> <repeat count>       \n \n \
-                  append direction is -h or -v ")
+                  append direction is -h or -v \
+                  append direction without interruption is -hc or -vc ")
     sys.exit(1)
 #end
 
-append_direction = sys.argv[1]
+append_direction = sys.argv[1].lower()
+continueFileProcessing  = False;
+if "c" in append_direction:
+    continueFileProcessing  = True;
+    append_direction.replace("c", "")
+#end
+
 output_fileOrPath = sys.argv[2]
 input_fileOrPath = sys.argv[3]
 # Determine the call case is multiple input files:
@@ -151,18 +158,28 @@ if repeat_count == 0:
         
         # If number of input directories are supplied, append all images with the same name in each directory
         for filename in os.listdir(input_paths[0]):
+            allFilesChecked = True
             input_filepaths = []
             for p in range(len(input_paths)):
                 input_filepaths.append(os.path.join(input_paths[p], filename))
                 if not (os.path.exists(input_filepaths[p]) and os.path.isfile(input_filepaths[p])):
-                    print(f"Error: File in filepath [ {input_filepaths[p]} ] does not exist!!!")
-                    sys.exit(1)
+                    print(f" *Missing File Error: File in filepath [ {input_filepaths[p]} ] does not exist!!!")
+                    if continueFileProcessing:
+                        sys.exit(1)
+                    else:
+                        allFilesChecked = False
+                    #end
                 #end
             #end
             
             output_filename = os.path.join(output_path, filename) 
             if (os.path.exists(output_filename) and os.path.isfile(output_filename)):
                 output_filename = os.path.splitext(output_filename)[0] + "_combined" + os.path.splitext(output_filename)[1]
+            #end
+
+            if not allFilesChecked:# If there is an error with the files go to the next set
+                print(f" *Skip Output File Error: File in filepath [ {output_filename} ] not created due to missing parts!!!")
+                continue
             #end
 
             append_images(input_filepaths, output_filename,0)                
