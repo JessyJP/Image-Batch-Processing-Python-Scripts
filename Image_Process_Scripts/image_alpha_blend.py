@@ -1,6 +1,6 @@
 ### ----------- Copy Right -----------
 # Alpha Blending Script
-# Author: 
+# Author: JessyJP
 # Date: April 4, 2023
 # Description: This script alpha blends one or more images.
 

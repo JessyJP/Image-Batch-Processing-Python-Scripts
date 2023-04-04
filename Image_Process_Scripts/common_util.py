@@ -1,3 +1,16 @@
+### ----------- Copy Right -----------
+# Common Utility Script
+# Author: JessyJP
+# Date: April 2, 2023
+# Description: Contains some shared functions.
+
+# The script uses the Pillow library, which is licensed under the open-source PIL Software License:
+# Permission to use, copy, modify and distribute PIL and its associated documentation for any purpose and without fee is hereby granted, provided that the above copyright notice appear in all copies.
+# The script itself is licensed under the MIT License:
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software...
+
+### ----------- Common Utility Script ----------- 
+
 import sys
 import os
 import subprocess
