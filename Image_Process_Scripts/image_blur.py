@@ -27,16 +27,14 @@ from common_util import checkAndCreateDirectory , checkAndCreateDirectory_withFi
 
 # Get command line arguments
 if len(sys.argv) < 3:
-    print("Usage: python blur.py <output_file_or_directory> <input_file_or_directory> [blur_radius_1] [blur_radius_2] ...")
+    print("Usage: python blur.py <input_file_or_directory> <blur_radius> [<output_file_or_directory>]")
     sys.exit(1)
+#end
 
-output_fileOrPath = sys.argv[1]
-input_fileOrPath = sys.argv[2]
-blur_radius = int(sys.argv[3])
+input_fileOrPath = sys.argv[1]
+blur_radius = int(sys.argv[2])
+output_fileOrPath = sys.argv[3] if len(sys.argv) > 3 else None
 
-# If output_fileOrPath is a directory, make sure it exists
-if os.path.isdir(output_fileOrPath):
-    checkAndCreateDirectory(output_fileOrPath)
 
 # Define a function to blur a single image
 def blur_image(input_filename, output_filename, blur_radius):
@@ -55,30 +53,40 @@ def blur_image(input_filename, output_filename, blur_radius):
 
 # If input_fileOrPath is a directory, process all images in the directory
 if os.path.isdir(input_fileOrPath):
-    input_dir = input_fileOrPath
-    output_dir = output_fileOrPath
+    # Assign the relevant variables
+    input_dir = input_fileOrPath;
+    output_dir = output_fileOrPath;
 
+    if output_dir is None:
+        output_dir = input_dir
+    #end
     checkAndCreateDirectory(output_dir)
-    
+
     for filename in os.listdir(input_dir):
         input_filename = os.path.join(input_dir, filename)
         output_filename = os.path.join(output_dir, filename)
 
-
-        # If output_dir is the same as the input directory, append '_blurred' to the filename
+        # If output_dir is the same as the input directory, append '_blured' to the filename
         if input_dir == output_dir:
-            output_filename = os.path.join(output_fileOrPath, os.path.splitext(filename)[0] + '_blurred' + os.path.splitext(filename)[1])
+            output_filename = os.path.join(output_dir, os.path.splitext(filename)[0] + '_blured' + os.path.splitext(filename)[1])
         #end
-        
-        # Process the image
+
+        # Process the image, i.e. do blurring 
         blur_image(input_filename, output_filename, blur_radius)
     #end
-
-# If input_fileOrPath is a file, process that file only
+    
 else:
-    input_filename = input_fileOrPath
-    output_filename = output_fileOrPath
-
+    # If a single image is supplied, just trim that image
+    # Assign the relevant variables
+    input_filename = input_fileOrPath;
+    if output_fileOrPath is None:
+        output_filename = os.path.splitext(input_filename)[0] + "_blured" + os.path.splitext(input_filename)[1]
+    else:
+        output_filename = output_fileOrPath
+    #end
+    
+    checkAndCreateDirectory_withFileName(output_filename)
+        
     # Process the image
     blur_image(input_filename, output_filename, blur_radius)
 #end
