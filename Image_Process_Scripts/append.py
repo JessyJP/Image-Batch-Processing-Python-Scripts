@@ -173,17 +173,17 @@ if repeat_count == 0:
  
  
     if assumeAllInputsArePaths: # Case 2
-        input_paths = input_fileOrPath
-        output_path = output_fileOrPath
+        input_dirs = input_fileOrPath
+        output_dir = output_fileOrPath
         
-        checkAndCreateDirectory(output_path)
+        checkAndCreateDirectory(output_dir)
         
         # If number of input directories are supplied, append all images with the same name in each directory
-        for filename in os.listdir(input_paths[0]):
+        for filename in os.listdir(input_dirs[0]):
             allFilesChecked = True
             input_filepaths = []
-            for p in range(len(input_paths)):
-                input_filepaths.append(os.path.join(input_paths[p], filename))
+            for p in range(len(input_dirs)):
+                input_filepaths.append(os.path.join(input_dirs[p], filename))
                 if not (os.path.exists(input_filepaths[p]) and os.path.isfile(input_filepaths[p])):
                     print(f" *Missing File Error: File in filepath [ {input_filepaths[p]} ] does not exist!!!")
                     if not continueFileProcessing:
@@ -194,7 +194,7 @@ if repeat_count == 0:
                 #end
             #end
             
-            output_filename = os.path.join(output_path, filename) 
+            output_filename = os.path.join(output_dir, filename) 
             if (os.path.exists(output_filename) and os.path.isfile(output_filename)):
                 output_filename = os.path.splitext(output_filename)[0] + "_combined" + os.path.splitext(output_filename)[1]
             #end
@@ -219,18 +219,21 @@ else:
     # Self Append all images from a single directory case 4:
     if os.path.isdir(input_fileOrPath):
         # Assign the relevant variables
-        input_path = input_fileOrPath
-        output_path = output_fileOrPath
+        input_dir = input_fileOrPath
+        output_dir = output_fileOrPath
         
-        checkAndCreateDirectory(output_path)
+        checkAndCreateDirectory(output_dir)
                 
         # If an input directory is supplied, append all images in the directory
-        for filename in os.listdir(input_path):
-            input_filename = os.path.join(input_path, filename)
-            if input_path == output_path:
+        for filename in os.listdir(input_dir):
+            input_filename = os.path.join(input_dir, filename)
+            if os.path.isdir(input_filename):# Check if the file name is a directory
+                continue; # TODO: recursion is needed here
+            #end
+            if input_dir == output_dir:
                 output_filename = os.path.splitext(input_filename)[0] + "_combined" + os.path.splitext(input_filename)[1]
             else:
-                output_filename = os.path.join(output_path, filename) 
+                output_filename = os.path.join(output_dir, filename) 
             #end
             append_images([input_filename], output_filename,repeat_count)                
         #end

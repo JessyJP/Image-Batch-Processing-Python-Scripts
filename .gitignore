@@ -33,3 +33,6 @@ env1/
 # Logs
 *.log
 logs/
+*.jpeg
+*.jpg
+*.webp

@@ -59,13 +59,16 @@ if os.path.isdir(ref_fileOrPath):
         raise NotImplementedError("Case not implemented")
         
         # If a reference directory is supplied, find the reference images and process the images one to one
-        for filename in os.listdir(ref_fileOrPath):
-            ref_image = Image.open(filename)
+        for ref_filename in os.listdir(ref_fileOrPath):
+            if os.path.isdir(os.path.join(ref_fileOrPath, ref_filename)):# Check if the file name is a directory
+                continue; # TODO: recursion is needed here
+            #end
+            ref_image = Image.open(ref_filename)
             ref_width, ref_height = ref_image.size
             
             # Construct filenames
-            input_filename  = os.path.join(input_dir, filename)                
-            output_filename = os.path.join(output_dir, filename)
+            input_filename  = os.path.join(input_dir, ref_filename)                
+            output_filename = os.path.join(output_dir, ref_filename)
             if input_filename == output_filename:
                 output_filename = os.path.splitext(input_filename)[0] + _suffix + os.path.splitext(input_filename)[1]
             # end

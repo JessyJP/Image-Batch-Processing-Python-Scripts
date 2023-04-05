@@ -72,15 +72,15 @@ if len(sys.argv) < 4:
 # check case 1
 if os.path.isfile(sys.argv[1]):
     output_file_path = sys.argv[1]
-    input_paths = []
+    input_dirs = []
     alpha_blends = []
     for i in range(3, len(sys.argv), 2):
         if not is_valid_alpha_blend(sys.argv[i+1]):
             print("Error: Invalid alpha blend value")
             sys.exit(1)
-        input_paths.append(sys.argv[i])
+        input_dirs.append(sys.argv[i])
         alpha_blends.append(float(sys.argv[i+1]))
-    if len(input_paths) < 2:
+    if len(input_dirs) < 2:
         print("Error: At least two input files are required for alpha blending")
         sys.exit(1)
 
@@ -128,12 +128,16 @@ elif len(input_files) % 2 == 0:
 # If the input is a directory, alpha blend all the images in that directory
 elif os.path.isdir(input_files[0]):
     # Assign the relevant variables
-    input_path = input_files[0]
-    output_path = output_fileOrPath
+    input_dir = input_files[0]
+    output_dir = output_fileOrPath
     
-    checkAndCreateDirectory(output_path)
+    checkAndCreateDirectory(output_dir)
 
     # If an input directory is supplied, alpha blend all images in the directory one by one
-    for filename in os.listdir(input_path):
-        input_filename = os.path.join(input_path, filename)
-        output_filename = os
+    for filename in os.listdir(input_dir):
+        input_filename = os.path.join(input_dir, filename)
+        if os.path.isdir(input_filename):# Check if the file name is a directory
+            continue; # TODO: recursion is needed here
+        #end
+        output_filename = os ............ # TODO: file not finished
+# TODO: THIS FILE IS UNFINISHED

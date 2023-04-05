@@ -65,6 +65,9 @@ if os.path.isdir(input_fileOrPath):
 
     for filename in os.listdir(input_dir):
         input_filename = os.path.join(input_dir, filename)
+        if os.path.isdir(input_filename):# Check if the file name is a directory
+            continue; # TODO: recursion is needed here
+        #end
         output_filename = os.path.join(output_dir, filename)
 
         # If output_dir is the same as the input directory, append '_adjusted' to the filename

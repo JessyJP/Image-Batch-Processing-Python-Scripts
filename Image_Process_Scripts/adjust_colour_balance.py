@@ -54,18 +54,21 @@ def adjust_color_balance(input_filename, output_filename):
 # Adjust color balance of all images in a directory or a specific type of image
 if os.path.isdir(input_fileOrPath):
     # Assign the relevant variables
-    input_path = input_fileOrPath;
-    output_path = output_fileOrPath;
+    input_dir = input_fileOrPath;
+    output_dir = output_fileOrPath;
     
-    checkAndCreateDirectory(output_path)
+    checkAndCreateDirectory(output_dir)
             
     # If an input directory is supplied, adjust color balance of all images in the directory one by one
-    for filename in os.listdir(input_path):
-        input_filename = os.path.join(input_path, filename)
-        if output_path is None:
+    for filename in os.listdir(input_dir):
+        input_filename = os.path.join(input_dir, filename)
+        if os.path.isdir(input_filename):# Check if the file name is a directory
+            continue; # TODO: recursion is needed here
+        #end
+        if output_dir is None:
             output_filename = os.path.splitext(input_filename)[0] + "_color_balanced" + os.path.splitext(input_filename)[1]
         else:
-            output_filename = os.path.join(output_path, filename)
+            output_filename = os.path.join(output_dir, filename)
         
         # Do the color balancing    
         adjust_color_balance(input_filename, output_filename)

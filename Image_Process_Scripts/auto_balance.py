@@ -90,18 +90,21 @@ def image_color_balance(input_filename, output_filename):
 # Auto-Adjust color balance of all images in a directory or a specific type of image
 if os.path.isdir(input_fileOrPath):
     # Assign the relevant variables
-    input_path = input_fileOrPath
-    output_path = output_fileOrPath or input_path
+    input_dir = input_fileOrPath
+    output_dir = output_fileOrPath or input_dir
     
-    checkAndCreateDirectory(output_path)
+    checkAndCreateDirectory(output_dir)
             
     # If an input directory is supplied, auto-adjust color balance of all images in the directory one by one
-    for filename in os.listdir(input_path):
-        input_filename = os.path.join(input_path, filename)
+    for filename in os.listdir(input_dir):
+        input_filename = os.path.join(input_dir, filename)
+        if os.path.isdir(input_filename):# Check if the file name is a directory
+            continue; # TODO: recursion is needed here
+        #end
         if output_fileOrPath is None:
-            output_filename = os.path.join(input_path, f"{os.path.splitext(filename)[0]}_auto_color_balanced{os.path.splitext(filename)[1]}")
+            output_filename = os.path.join(input_dir, f"{os.path.splitext(filename)[0]}_auto_color_balanced{os.path.splitext(filename)[1]}")
         else:
-            output_filename = os.path.join(output_path, filename)
+            output_filename = os.path.join(output_dir, filename)
         
         # Auto-Adjust color balance    
         image_color_balance(input_filename, output_filename)

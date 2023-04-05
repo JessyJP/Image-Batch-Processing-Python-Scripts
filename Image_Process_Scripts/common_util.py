@@ -47,17 +47,17 @@ def check_and_install_required_packages(package_list):
 
 ## ============= Directory Check and Make Section =============
 
-def checkAndCreateDirectory(output_path):
+def checkAndCreateDirectory(output_dir):
     # If an input directory is supplied, check for an output directory
     # Create the output directory if it doesn't exist
-    if output_path is not None:        
+    if output_dir is not None:        
         # To avoid errors make sure there is always a forward slash at the end
-        if output_path != '' and not output_path.endswith('/'):
-            output_path += '/'
+        if output_dir != '' and not output_dir.endswith('/'):
+            output_dir += '/'
         #end
         
         # Conversion to dirname
-        output_dir = os.path.dirname(output_path)          
+        output_dir = os.path.dirname(output_dir)          
         # Create the directory if it doesn't exist
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
@@ -103,18 +103,21 @@ def process_resize_images(width,height,input_fileOrPath,output_fileOrPath,_suffi
     # Resize all images in a directory or a specific type of image
     if os.path.isdir(input_fileOrPath):
         # Assign the relevant variables
-        input_path = input_fileOrPath;
-        output_path = output_fileOrPath;
+        input_dir = input_fileOrPath;
+        output_dir = output_fileOrPath;
         
-        checkAndCreateDirectory(output_path)
+        checkAndCreateDirectory(output_dir)
                 
         # If an input directory is supplied, resize all images in the directory one by one
-        for filename in os.listdir(input_path):
-            input_filename = os.path.join(input_path, filename)
-            if output_path is None:
+        for filename in os.listdir(input_dir):
+            input_filename = os.path.join(input_dir, filename)
+            if os.path.isdir(input_filename):# Check if the file name is a directory
+                continue; # TODO: recursion is needed here
+            #end
+            if output_dir is None:
                 output_filename = os.path.splitext(input_filename)[0] + _suffix + os.path.splitext(input_filename)[1]
             else:
-                output_filename = os.path.join(output_path, filename)
+                output_filename = os.path.join(output_dir, filename)
             #end
             
             # Do the resizing    
