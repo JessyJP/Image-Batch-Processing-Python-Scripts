@@ -97,94 +97,91 @@ python %imod%/brightness.py %out%/Test_brightness_1.2_dir 0.4
 
 REM : rotate.py
 REM python %imod%/rotate.py
+REM Rotate at 1 degree
 python %imod%/rotate.py %in%/%A%  	1  %out%/Test_rotate_1_file.png
 python %imod%/rotate.py %out%/Test_rotate_1_file.png  1
 python %imod%/rotate.py %in%/ 1 %out%/Test_rotate_1_dir         
 python %imod%/rotate.py %out%/Test_rotate_1_dir   1 
-
+REM Rotate at -1 degree
 python %imod%/rotate.py %in%/%A%  	-1  %out%/Test_rotate_neg1_file.png
 python %imod%/rotate.py %out%/Test_rotate_neg1_file.png  -1
 python %imod%/rotate.py %in%/ -1 %out%/Test_rotate_neg1_dir         
 python %imod%/rotate.py %out%/Test_rotate_neg1_dir   -1 
-
+REM Rotate at 5 degrees
 python %imod%/rotate.py %in%/%A%  	5  %out%/Test_rotate_5_file.png
 python %imod%/rotate.py %out%/Test_rotate_5_file.png  5
 python %imod%/rotate.py %in%/ 5 %out%/Test_rotate_5_dir         
 python %imod%/rotate.py %out%/Test_rotate_5_dir   5 
-
+REM Rotate at -5 degrees
 python %imod%/rotate.py %in%/%A%  	-5  %out%/Test_rotate_neg5_file.png
 python %imod%/rotate.py %out%/Test_rotate_neg5_file.png  -5
 python %imod%/rotate.py %in%/ -5 %out%/Test_rotate_neg5_dir         
 python %imod%/rotate.py %out%/Test_rotate_neg5_dir   -5 
-
+REM Rotate at 10 degrees
 python %imod%/rotate.py %in%/%A%  	10  %out%/Test_rotate_10_file.png
 python %imod%/rotate.py %out%/Test_rotate_10_file.png  10
 python %imod%/rotate.py %in%/ 10 %out%/Test_rotate_10_dir         
 python %imod%/rotate.py %out%/Test_rotate_10_dir   10 
-
+REM Rotate at -10 degrees
 python %imod%/rotate.py %in%/%A%  	-10  %out%/Test_rotate_neg10_file.png
 python %imod%/rotate.py %out%/Test_rotate_neg10_file.png  -10
 python %imod%/rotate.py %in%/ -10 %out%/Test_rotate_neg10_dir         
 python %imod%/rotate.py %out%/Test_rotate_neg10_dir   -10 
-
+REM Rotate at 15 degrees
 python %imod%/rotate.py %in%/%A%  	15  %out%/Test_rotate_15_file.png
 python %imod%/rotate.py %out%/Test_rotate_15_file.png  15
 python %imod%/rotate.py %in%/ 15 %out%/Test_rotate_15_dir         
 python %imod%/rotate.py %out%/Test_rotate_15_dir   15 
-
+REM Rotate at 30 degrees
 python %imod%/rotate.py %in%/%A% 30 %out%/Test_rotate_30_file.png
 python %imod%/rotate.py %out%/Test_rotate_30_file.png 30
 python %imod%/rotate.py %in%/ 30 %out%/Test_rotate_30_dir
 python %imod%/rotate.py %out%/Test_rotate_30_dir 30
-
+REM Rotate at 45 degrees
 python %imod%/rotate.py %in%/%A% 45 %out%/Test_rotate_45_file.png
 python %imod%/rotate.py %out%/Test_rotate_45_file.png 45
 python %imod%/rotate.py %in%/ 45 %out%/Test_rotate_45_dir
 python %imod%/rotate.py %out%/Test_rotate_45_dir 45
-
+REM Rotate at 60 degrees
 python %imod%/rotate.py %in%/%A% 60 %out%/Test_rotate_60_file.png
 python %imod%/rotate.py %out%/Test_rotate_60_file.png 60
 python %imod%/rotate.py %in%/ 60 %out%/Test_rotate_60_dir
 python %imod%/rotate.py %out%/Test_rotate_60_dir 60
-
+REM Rotate at 90 degrees
 python %imod%/rotate.py %in%/%A% 90 %out%/Test_rotate_90_file.png
 python %imod%/rotate.py %out%/Test_rotate_90_file.png 90
 python %imod%/rotate.py %in%/ 90 %out%/Test_rotate_90_dir
 python %imod%/rotate.py %out%/Test_rotate_90_dir 
-
+REM Rotate at 135 degrees
 python %imod%/rotate.py %in%/%A% 135 %out%/Test_rotate_135_file.png
 python %imod%/rotate.py %out%/Test_rotate_135_file.png 135
 python %imod%/rotate.py %in%/ 135 %out%/Test_rotate_135_dir
 python %imod%/rotate.py %out%/Test_rotate_135_dir 135
-
+REM Rotate at 180 degrees
 python %imod%/rotate.py %in%/%A% 180 %out%/Test_rotate_180_file.png
 python %imod%/rotate.py %out%/Test_rotate_180_file.png 180
 python %imod%/rotate.py %in%/ 180 %out%/Test_rotate_180_dir
 python %imod%/rotate.py %out%/Test_rotate_180_dir 180
-
+REM Rotate at 270 degrees
 python %imod%/rotate.py %in%/%A% 270 %out%/Test_rotate_270_file.png
 python %imod%/rotate.py %out%/Test_rotate_270_file.png 270
 python %imod%/rotate.py %in%/ 270 %out%/Test_rotate_270_dir
 python %imod%/rotate.py %out%/Test_rotate_270_dir 270
-
+REM Rotate at 360 degrees
 python %imod%/rotate.py %in%/%A% 360 %out%/Test_rotate_360_file.png
 python %imod%/rotate.py %out%/Test_rotate_360_file.png 360
 python %imod%/rotate.py %in%/ 360 %out%/Test_rotate_360_dir
 python %imod%/rotate.py %out%/Test_rotate_360_dir 360
-
+REM Rotate at 400 degrees
 python %imod%/rotate.py %in%/%A%  	400  %out%/Test_rotate_400_file.png
 python %imod%/rotate.py %out%/Test_rotate_400_file.png  400
 python %imod%/rotate.py %in%/ 400 %out%/Test_rotate_400_dir         
 python %imod%/rotate.py %out%/Test_rotate_400_dir   400
-
+REM Rotate at -400 degrees
 python %imod%/rotate.py %in%/%A%  	-400  %out%/Test_rotate_n400_file.png
 python %imod%/rotate.py %out%/Test_rotate_n400_file.png  -400
 python %imod%/rotate.py %in%/ -400 %out%/Test_rotate_n400_dir         
 python %imod%/rotate.py %out%/Test_rotate_n400_dir   -400
-
-
-
-
 
 
 
@@ -216,6 +213,7 @@ python %imod%/append.py -va %out%/test_append_file_h.png %in%/%A% 3
 python %imod%/append.py -va %out%/test_append_file_h2.png %in%/%C% %in%/%B% %in%/%A%
 python %imod%/append.py -ha %out%/test_append_file_v.png %in%/%A% 3
 python %imod%/append.py -ha %out%/test_append_file_v2.png %in%/%C% %in%/%B% %in%/%A%
+REM Combine repeat from 1 to 5. Include alpha layer -ha or -va
 python %imod%/append.py -h %out%/Test_Append_1_h %in%/ 1
 python %imod%/append.py -h %out%/Test_Append_2_h %in%/ 2
 python %imod%/append.py -h %out%/Test_Append_3_h %in%/ 3
@@ -228,6 +226,7 @@ python %imod%/append.py -v %out%/Test_Append_3_v %in%/ 3
 python %imod%/append.py -v %out%/Test_Append_4_v %in%/ 4
 python %imod%/append.py -v %out%/Test_Append_5_v %in%/ 5
 python %imod%/append.py -va %out%/Test_Append_5_v %in%/ 5
+REM Test non-continuous and Continuous mode where we go to the next if files are missing
 python %imod%/append.py -v %out%/Test_append_Combined_v %out%/Test_auto_balance_dir/ %out%/Test_blur_dir/ %out%/Test_resize_by_ref_file_dir %out%/Test_resize_dir  %out%/Test_trim_dir
 python %imod%/append.py -h %out%/Test_append_Combined_h %out%/Test_auto_balance_dir/ %out%/Test_blur_dir/ %out%/Test_resize_by_ref_file_dir %out%/Test_resize_dir 	%out%/Test_trim_dir
 python %imod%/append.py -vc %out%/Test_append_Combined_v %out%/Test_auto_balance_dir/ %out%/Test_blur_dir/ %out%/Test_resize_by_ref_file_dir %out%/Test_resize_dir  %out%/Test_trim_dir
