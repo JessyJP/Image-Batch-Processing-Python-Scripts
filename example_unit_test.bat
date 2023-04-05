@@ -60,6 +60,62 @@ python %imod%/blur.py %out%/Test_blur_file.png  5
 python %imod%/blur.py %in%/ 2 %out%/Test_blur_dir         
 python %imod%/blur.py %out%/Test_blur_dir   10 
 
+
+REM : convert.py
+REM TODO:: THE some formats are not supported! 
+REM # formats = ["JPG", "JPEG",  "EPS",  "MPO", "SVG", "PDF","PSD","XCF","RAW"]# NOT SUPPORTED
+REM python %imod%/convert.py
+python %imod%/convert.py %in%/%A% 						BMP 	%out%/Test_Convert_bmp_file.bmp
+python %imod%/convert.py %out%/Test_Convert_bmp_file.bmp 		PNG 	
+python %imod%/convert.py %in%/ 							BMP 	%out%/Test_Convert_bmp_dir
+python %imod%/convert.py %out%/Test_Convert_bmp_dir/ 			PNG 	
+REM Test case set for EPS
+REM python %imod%/convert.py %in%/%A% 						EPS 	%out%/Test_Convert_eps_file.eps
+REM python %imod%/convert.py %out%/Test_Convert_eps_file.eps 		PNG 	
+REM python %imod%/convert.py %in%/ 							EPS 	%out%/Test_Convert_eps_dir 	
+REM python %imod%/convert.py %out%/Test_Convert_eps_dir/ 			PNG 	
+REM Test case set for GIF	
+python %imod%/convert.py %in%/%A% 						GIF 	%out%/Test_Convert_gif_file.gif
+python %imod%/convert.py %out%/Test_Convert_gif_file.gif 		PNG 	
+python %imod%/convert.py %in%/ 							GIF 	%out%/Test_Convert_gif_dir	
+python %imod%/convert.py %out%/Test_Convert_gif_dir/ 			PNG 	
+REM Test case set for ICO	
+python %imod%/convert.py %in%/%A% 						ICO 	%out%/Test_Convert_ico_file.ico
+python %imod%/convert.py %out%/Test_Convert_ico_file.ico 		PNG 	
+python %imod%/convert.py %in%/ 							ICO 	%out%/Test_Convert_ico_dir 		
+python %imod%/convert.py %out%/Test_Convert_ico_dir/ 			PNG 	
+REM Test case set for JPEG
+REM python %imod%/convert.py %in%/%A% 						JPEG 	%out%/Test_Convert_jpeg_file.jpeg
+REM python %imod%/convert.py %out%/Test_Convert_jpeg_file.jpeg 		PNG 	
+REM python %imod%/convert.py %in%/ 							JPEG 	%out%/Test_Convert_jpeg_dir
+REM python %imod%/convert.py %out%/Test_Convert_jpeg_dir/ 			PNG 	
+REM Test case set for MPO
+REM python %imod%/convert.py %in%/%A% 						MPO 	%out%/Test_Convert_mpo_file.mpo
+REM python %imod%/convert.py %out%/Test_Convert_mpo_file.mpo 		PNG 	
+REM python %imod%/convert.py %in%/ 							MPO 	%out%/Test_Convert_mpo_dir	
+REM python %imod%/convert.py %out%/Test_Convert_mpo_dir/ 			PNG 	
+REM Test case set for TIFF (Tagged Image File Format)
+python %imod%/convert.py %in%/%A% 						TIFF 	%out%/Test_Convert_tiff_file.tiff
+python %imod%/convert.py %out%/Test_Convert_tiff_file.tiff 		PNG 	
+python %imod%/convert.py %in%/ 							TIFF 	%out%/Test_Convert_tiff_dir	
+python %imod%/convert.py %out%/Test_Convert_tiff_dir/ 			PNG 	
+REM WEBP (Web Picture Format)
+python %imod%/convert.py %in%/%A% 						WEBP 	%out%/Test_Convert_webp_file.webp
+python %imod%/convert.py %out%/Test_Convert_webp_file.webp 		PNG 	
+python %imod%/convert.py %in%/ 							WEBP 	%out%/Test_Convert_webp_dir
+python %imod%/convert.py %out%/Test_Convert_webp_dir/ 			PNG 	
+REM SVG (Scalable Vector Graphics)
+REM python %imod%/convert.py %in%/%A% 						SVG 	%out%/Test_Convert_svg_file.svg
+REM python %imod%/convert.py %out%/Test_Convert_svg_file.svg 		PNG 	
+REM python %imod%/convert.py %in%/ 							SVG 	%out%/Test_Convert_svg_dir
+REM python %imod%/convert.py %out%/Test_Convert_svg_dir/ 			PNG 	
+REM Test case set for PDF TODO: Currently the produced files are empty i.e. a fix is needed!
+REM python %imod%/convert.py %in%/%A% 						PDF 	%out%/Test_Convert_pdf_file.pdf
+REM python %imod%/convert.py %out%/Test_Convert_pdf_file.pdf 		PNG 	
+REM python %imod%/convert.py %in%/ 							PDF 	%out%/Test_Convert_pdf_dir
+REM python %imod%/convert.py %out%/Test_Convert_pdf_dir/ 			PNG 	
+
+
 REM : flip.py
 REM python %imod%/flip.py
 python %imod%/flip.py %in%/%A% -h %out%/Test_flip_file_h.png
