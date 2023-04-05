@@ -9,7 +9,7 @@ REM # ============ Input path: Get the input arguemnt path =====================
 REM set default output directory
 set imod="./Image_Process_Scripts"
 set in="./Input"
-set out="R:/Output"
+set out="./Output"
 
 REM Example Single Images
 set A="FX_08_VirtualDrummerSolid.png"
@@ -275,13 +275,13 @@ python %imod%/append.py -h %out%/Test_Append_2_h %in%/ 2
 python %imod%/append.py -h %out%/Test_Append_3_h %in%/ 3
 python %imod%/append.py -h %out%/Test_Append_4_h %in%/ 4
 python %imod%/append.py -h %out%/Test_Append_5_h %in%/ 5
-python %imod%/append.py -ha %out%/Test_Append_5_h %in%/ 5
+python %imod%/append.py -ha %out%/Test_Append_5_ha %in%/ 5
 python %imod%/append.py -v %out%/Test_Append_1_v %in%/ 1
 python %imod%/append.py -v %out%/Test_Append_2_v %in%/ 2
 python %imod%/append.py -v %out%/Test_Append_3_v %in%/ 3
 python %imod%/append.py -v %out%/Test_Append_4_v %in%/ 4
 python %imod%/append.py -v %out%/Test_Append_5_v %in%/ 5
-python %imod%/append.py -va %out%/Test_Append_5_v %in%/ 5
+python %imod%/append.py -va %out%/Test_Append_5_va %in%/ 5
 REM Test non-continuous and Continuous mode where we go to the next if files are missing
 python %imod%/append.py -v %out%/Test_append_Combined_v %out%/Test_auto_balance_dir/ %out%/Test_blur_dir/ %out%/Test_resize_by_ref_file_dir %out%/Test_resize_dir  %out%/Test_trim_dir
 python %imod%/append.py -h %out%/Test_append_Combined_h %out%/Test_auto_balance_dir/ %out%/Test_blur_dir/ %out%/Test_resize_by_ref_file_dir %out%/Test_resize_dir 	%out%/Test_trim_dir

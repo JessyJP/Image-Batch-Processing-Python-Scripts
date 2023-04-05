@@ -45,11 +45,11 @@ continueFileProcessing  = False;
 includeAlphaChannel = False;
 if "c" in inParam:
     continueFileProcessing  = True;
-    inParam.replace("c", "")
+    inParam = inParam.replace("c", "")
 #end
 if "a" in inParam:
     includeAlphaChannel  = True;
-    inParam.replace("a", "")
+    inParam = inParam.replace("a", "")
 #end
 append_direction = inParam;
 
