@@ -51,7 +51,6 @@ def alpha_blend_multiple(input_files, output_filename):
     print(f"Alpha Blend: {input_files} -> {output_filename}")
 
 
-
 # check if alpha blend is valid
 def is_valid_alpha_blend(alpha_blend):
     try:
@@ -62,11 +61,12 @@ def is_valid_alpha_blend(alpha_blend):
         return False
     return True
 
+TODO: need to finish this script
 # check input arguments
 if len(sys.argv) < 4:
-    print("Usage: python alphablend.py <output_filepath>    <input_filepath1> <alpha_blend1> <input_filepath2> <alpha_blend2> ... OR")
-    print("Usage: python alphablend.py <output_directory>   <input_directory> <alpha_blend> <input_filepath>")
-    print("Usage: python alphablend.py <output_directories> <input_directories> <alpha_blend>")
+    print("Usage: python alphablend.py <output_filepath>    <alpha_blend>     <input_filepath_1>  <input_filepath2>")
+    print("Usage: python alphablend.py <output_directory>   <alpha_blend>     <input_directory_1>  <input_filepath_1>")
+    print("Usage: python alphablend.py <output_directories> <alpha_blend>     <input_directories> ")
     sys.exit(1)
 
 # check case 1
@@ -74,7 +74,7 @@ if os.path.isfile(sys.argv[1]):
     output_file_path = sys.argv[1]
     input_paths = []
     alpha_blends = []
-    for i in range(2, len(sys.argv), 2):
+    for i in range(3, len(sys.argv), 2):
         if not is_valid_alpha_blend(sys.argv[i+1]):
             print("Error: Invalid alpha blend value")
             sys.exit(1)
