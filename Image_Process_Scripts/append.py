@@ -33,17 +33,27 @@ if len(sys.argv) < 5:
                   case 3: python append.py <append direction> <output file-path> <input image file-path> <repeat count>    OR \n\
                   case 4: python append.py <append direction> <output directory> <input directory> <repeat count>       \n \n \
                   append direction is -h or -v \
-                  append direction without interruption is -hc or -vc ")
+                  continuous mode is -hc or -vc \
+                  continuous alpha channel is -ha or -va \
+                  append direction without interruption and alpha channel is -hca or -vca ")
     sys.exit(1)
 #end
 
-append_direction = sys.argv[1].lower()
+# Input Parameters
+inParam = sys.argv[1].lower()
 continueFileProcessing  = False;
-if "c" in append_direction:
+includeAlphaChannel = False;
+if "c" in inParam:
     continueFileProcessing  = True;
-    append_direction.replace("c", "")
+    inParam.replace("c", "")
 #end
+if "a" in inParam:
+    includeAlphaChannel  = True;
+    inParam.replace("a", "")
+#end
+append_direction = inParam;
 
+# Parse file-paths or directories
 output_fileOrPath = sys.argv[2]
 input_fileOrPath = sys.argv[3]
 # Determine the call case is multiple input files:
@@ -69,9 +79,14 @@ def append_images_horizontally(input_filenames, output_filename, repeat_count=0)
     max_height = max(img.height for img in loaded_images)
     total_width = sum(img.width for img in loaded_images)
 
+    # Create the new image
+    mode = 'RGB'
+    if includeAlphaChannel:
+        mode = 'RGBA'
+    #end
     
     # Create the new image
-    new_image = Image.new('RGB', (total_width, max_height))
+    new_image = Image.new(mode, (total_width, max_height))
     
     # Append all images horizontally
     current_x = 0
@@ -104,19 +119,26 @@ def append_images_vertically(input_filenames, output_filename,repeat_count=0):
     total_height = sum(img.height for img in loaded_images)
     
     # Create the new image
-    new_image = Image.new('RGB', (max_width, total_height))
+    mode = 'RGB'
+    if includeAlphaChannel:
+        mode = 'RGBA'
+    #end
+    
+    # Create the new image
+    new_image = Image.new(mode, (max_width, total_height))
     
     # Append all images vertically
     current_y = 0
     for image in loaded_images:
         new_image.paste(image, (0, current_y))
         current_y += image.height
+    #end
     
     # Save the new image
     new_image.save(output_filename)
     
     # Print message for the processed images
-    print(f"Append Vertially: {input_filenames} {arrow} {output_filename}")
+    print(f"Append Vertically: {input_filenames} {arrow} {output_filename}")
 #end
 
 # Direction dispatcher 
@@ -164,7 +186,7 @@ if repeat_count == 0:
                 input_filepaths.append(os.path.join(input_paths[p], filename))
                 if not (os.path.exists(input_filepaths[p]) and os.path.isfile(input_filepaths[p])):
                     print(f" *Missing File Error: File in filepath [ {input_filepaths[p]} ] does not exist!!!")
-                    if continueFileProcessing:
+                    if not continueFileProcessing:
                         sys.exit(1)
                     else:
                         allFilesChecked = False

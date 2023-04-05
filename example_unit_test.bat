@@ -212,16 +212,24 @@ python %imod%/append.py -v %out%/test_append_file_h.png %in%/%A% 3
 python %imod%/append.py -v %out%/test_append_file_h2.png %in%/%C% %in%/%B% %in%/%A%
 python %imod%/append.py -h %out%/test_append_file_v.png %in%/%A% 3
 python %imod%/append.py -h %out%/test_append_file_v2.png %in%/%C% %in%/%B% %in%/%A%
+python %imod%/append.py -va %out%/test_append_file_h.png %in%/%A% 3
+python %imod%/append.py -va %out%/test_append_file_h2.png %in%/%C% %in%/%B% %in%/%A%
+python %imod%/append.py -ha %out%/test_append_file_v.png %in%/%A% 3
+python %imod%/append.py -ha %out%/test_append_file_v2.png %in%/%C% %in%/%B% %in%/%A%
 python %imod%/append.py -h %out%/Test_Append_1_h %in%/ 1
 python %imod%/append.py -h %out%/Test_Append_2_h %in%/ 2
 python %imod%/append.py -h %out%/Test_Append_3_h %in%/ 3
 python %imod%/append.py -h %out%/Test_Append_4_h %in%/ 4
 python %imod%/append.py -h %out%/Test_Append_5_h %in%/ 5
+python %imod%/append.py -ha %out%/Test_Append_5_h %in%/ 5
 python %imod%/append.py -v %out%/Test_Append_1_v %in%/ 1
 python %imod%/append.py -v %out%/Test_Append_2_v %in%/ 2
 python %imod%/append.py -v %out%/Test_Append_3_v %in%/ 3
 python %imod%/append.py -v %out%/Test_Append_4_v %in%/ 4
 python %imod%/append.py -v %out%/Test_Append_5_v %in%/ 5
+python %imod%/append.py -va %out%/Test_Append_5_v %in%/ 5
 python %imod%/append.py -v %out%/Test_append_Combined_v %out%/Test_auto_balance_dir/ %out%/Test_blur_dir/ %out%/Test_resize_by_ref_file_dir %out%/Test_resize_dir  %out%/Test_trim_dir
 python %imod%/append.py -h %out%/Test_append_Combined_h %out%/Test_auto_balance_dir/ %out%/Test_blur_dir/ %out%/Test_resize_by_ref_file_dir %out%/Test_resize_dir 	%out%/Test_trim_dir
+python %imod%/append.py -vc %out%/Test_append_Combined_v %out%/Test_auto_balance_dir/ %out%/Test_blur_dir/ %out%/Test_resize_by_ref_file_dir %out%/Test_resize_dir  %out%/Test_trim_dir
+python %imod%/append.py -hc %out%/Test_append_Combined_h %out%/Test_auto_balance_dir/ %out%/Test_blur_dir/ %out%/Test_resize_by_ref_file_dir %out%/Test_resize_dir 	%out%/Test_trim_dir
 
