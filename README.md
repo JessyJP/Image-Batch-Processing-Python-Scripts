@@ -34,5 +34,8 @@ Originally this was intended all the necessary funtionalty for icon making.
 			* rotate.py (Looks a bit ugly when rotated. Better interpolation is needed.)
 			* trim.py
 
+				TODO: cropping
+			 removeImages with specific substring
+			 insert Text
 
 			
